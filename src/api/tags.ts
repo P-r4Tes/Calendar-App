@@ -1,5 +1,5 @@
 import { postFirebase } from "./firebase";
 
-export const postTag = (body: { title: string; color: string }) => {
+export const postTag = (body: tag) => {
   postFirebase<"tags">("tags", body);
 };

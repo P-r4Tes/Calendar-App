@@ -11,9 +11,9 @@ type tag = {
 };
 type schedule = {
   title: string;
-  start_time: Date;
-  end_time: Date;
-  tag: string;
+  start_time: string;
+  end_time: string;
+  tags: string[];
   description: string;
   users: string[];
 };
