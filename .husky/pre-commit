@@ -1,1 +1,6 @@
+echo "🚧🚧 ... Running Testing ... 🚧🚧"
 yarn test
+echo "🚧🚧 ... Running Prettier ... 🚧🚧"
+yarn prettify
+echo "🚧🚧 ... Running ESLint ... 🚧🚧"
+yarn lint

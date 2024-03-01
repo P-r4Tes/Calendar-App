@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 type TableTypes = "users" | "tags" | "schedules" | "groups";
 
 type id = { id: string };

@@ -17,7 +17,7 @@ export default function Home() {
     fetchData();
   }, []);
   const handleButton = () => {
-    dummy.users.forEach(tag => {});
+    console.log(dummy);
   };
 
   return (
