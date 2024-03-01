@@ -21,7 +21,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "eslint-config-prettier",
-    "plugin:storybook/recommended"
+    "plugin:storybook/recommended",
   ],
 
   plugins: ["@typescript-eslint", "import", "prettier", "react", "react-hooks"],
@@ -62,7 +62,14 @@ module.exports = {
     "eol-last": ["error", "always"],
     "func-call-spacing": ["error", "never"],
     "space-infix-ops": "error",
-    "space-before-function-paren": ["error", "never"],
+    "space-before-function-paren": [
+      "error",
+      {
+        anonymous: "never",
+        named: "never",
+        asyncArrow: "always",
+      },
+    ],
 
     "@typescript-eslint/indent": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
