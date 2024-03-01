@@ -1,10 +1,15 @@
-import { isStringArgumentsValid } from "@/lib/functions/stringValidation";
-import { popFirebaseArray, postFirebase, pushFirebaseArray } from "./firebase";
+import { isEmpty, isStringArgumentsValid } from "@/lib/functions/stringValidation";
+import { getFirebase, popFirebaseArray, postFirebase, pushFirebaseArray } from "./firebase";
 
 export const postSchedule = (body: schedule) => {
   const { description, endTime, startTime, title } = body;
   if (!isStringArgumentsValid(title, endTime, startTime, description)) throw new Error("Invalid string arguments");
   postFirebase<"schedules">("schedules", body);
+};
+
+export const getSchedule = (id: string) => {
+  if (isEmpty(id)) throw new Error("Invalid id");
+  return getFirebase<"schedules">("schedules", id);
 };
 
 export const pushScheduleTag = (id: string, value: string) => {

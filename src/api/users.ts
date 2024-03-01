@@ -7,7 +7,7 @@ export const postUser = (body: user) => {
 };
 
 export const getUser = (id: string) => {
-  if (isEmpty(id)) throw new Error("Invalid string arguments");
+  if (isEmpty(id)) throw new Error("Invalid id");
   return getFirebase<"users">("users", id);
 };
 
