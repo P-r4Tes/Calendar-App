@@ -1,19 +1,22 @@
 "use client";
 
+import { getGroup } from "@/api/groups";
+import { getSchedule } from "@/api/schedules";
 import { getTag } from "@/api/tags";
-import { db } from "@/lib/firebaseConfig";
-import { collection, getDocs } from "firebase/firestore";
+import { getUser } from "@/api/users";
 import { useEffect } from "react";
 
 export default function Home() {
-  const store = db;
   useEffect(() => {
     const fetchData = async () => {
-      const querySnapshot = await getDocs(collection(store, "groups"));
-      const docsArray = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      console.log(docsArray);
-      const data = await getTag("276QHNTcjeHbVQPihBFB");
-      console.log("data", data);
+      const Tag = await getTag("276QHNTcjeHbVQPihBFB");
+      const Schedule = await getSchedule("1AUxRZyDLBKd4VPUmbKH");
+      const Group = await getGroup("FZrYjYjNuWXRvtXU02mZ");
+      const User = await getUser("6Rr06CqOUQjXuFG3dNyq");
+      console.log("Tag", Tag);
+      console.log("Schedule", Schedule);
+      console.log("Group", Group);
+      console.log("User", User);
     };
 
     fetchData();
