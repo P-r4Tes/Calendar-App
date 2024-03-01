@@ -1,5 +1,6 @@
 "use client";
 
+import { getUser } from "@/api/users";
 import { db } from "@/lib/firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect } from "react";
@@ -11,6 +12,8 @@ export default function Home() {
       const querySnapshot = await getDocs(collection(store, "groups"));
       const docsArray = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       console.log(docsArray);
+      const data = await getUser("6Rr06CqOUQjXuFG3dNyq");
+      console.log("data", data);
     };
 
     fetchData();

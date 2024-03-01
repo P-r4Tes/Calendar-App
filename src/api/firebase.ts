@@ -1,11 +1,25 @@
 import { db } from "@/lib/firebaseConfig";
-import { addDoc, arrayRemove, arrayUnion, collection, doc, updateDoc } from "firebase/firestore";
+import { addDoc, arrayRemove, arrayUnion, collection, doc, getDoc, updateDoc } from "firebase/firestore";
 
 export const postFirebase = async <T extends TableTypes>(table: T, body: TalbeField<T>) => {
   try {
     await addDoc(collection(db, table), body);
   } catch (e) {
     console.error("Invalid Data");
+  }
+};
+
+export const getFirebase = async <T extends TableTypes>(table: T, id: string) => {
+  try {
+    const firebaseRef = doc(db, table, id);
+    const docSnap = await getDoc(firebaseRef);
+    if (docSnap.exists()) {
+      return docSnap.data() as TalbeField<T>;
+    } else {
+      console.error("No such document!");
+    }
+  } catch (e) {
+    console.error("Error getting document: ", e);
   }
 };
 

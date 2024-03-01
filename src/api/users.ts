@@ -1,9 +1,14 @@
 import { isEmpty, isStringArgumentsValid } from "@/lib/functions/stringValidation";
-import { popFirebaseArray, postFirebase, pushFirebaseArray, updateFirebaseField } from "./firebase";
+import { getFirebase, popFirebaseArray, postFirebase, pushFirebaseArray, updateFirebaseField } from "./firebase";
 
 export const postUser = (body: user) => {
   if (isEmpty(body.name)) throw new Error("Invalid name");
   postFirebase<"users">("users", body);
+};
+
+export const getUser = (id: string) => {
+  if (isEmpty(id)) throw new Error("Invalid string arguments");
+  return getFirebase<"users">("users", id);
 };
 
 export const pushUserPersonalSchedule = (id: string, value: string) => {
