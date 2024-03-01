@@ -1,6 +1,5 @@
 "use client";
 
-import { dummy } from "@/constants/dummy";
 import { db } from "@/lib/firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect } from "react";
@@ -9,7 +8,7 @@ export default function Home() {
   const store = db;
   useEffect(() => {
     const fetchData = async () => {
-      const querySnapshot = await getDocs(collection(store, "user"));
+      const querySnapshot = await getDocs(collection(store, "groups"));
       const docsArray = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       console.log(docsArray);
     };
@@ -17,7 +16,7 @@ export default function Home() {
     fetchData();
   }, []);
   const handleButton = () => {
-    console.log(dummy);
+    console.log("안녕하세요?");
   };
 
   return (
