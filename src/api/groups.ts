@@ -1,10 +1,15 @@
 import { isEmpty, isStringArgumentsValid } from "@/lib/functions/stringValidation";
-import { popFirebaseArray, postFirebase, pushFirebaseArray } from "./firebase";
+import { getFirebase, popFirebaseArray, postFirebase, pushFirebaseArray } from "./firebase";
 
 export const postGroup = (body: group) => {
   if (isEmpty(body.name)) throw new Error("Invalid name");
 
   postFirebase<"groups">("groups", body);
+};
+
+export const getGroup = (id: string) => {
+  if (isEmpty(id)) throw new Error("Invalid id");
+  return getFirebase<"groups">("groups", id);
 };
 
 export const pushGroupSchedule = (id: string, value: string) => {

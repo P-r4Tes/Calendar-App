@@ -1,9 +1,10 @@
 import * as firebaseModule from "@/api/firebase";
-import { popGroupSchedule, popGroupuser, postGroup, pushGroupSchedule, pushGroupUser } from "@/api/groups";
+import { getGroup, popGroupSchedule, popGroupuser, postGroup, pushGroupSchedule, pushGroupUser } from "@/api/groups";
 
 jest.mock("@/api/firebase", () => ({
   ...jest.requireActual("@/api/firebase"),
   postFirebase: jest.fn(),
+  getFirebase: jest.fn(),
   pushFirebaseArray: jest.fn(),
   popFirebaseArray: jest.fn(),
 }));
@@ -21,6 +22,12 @@ describe("postGroup function", () => {
     const body = { name: "TEST", schedules: [], users: [] };
     postGroup(body);
     expect(firebaseModule.postFirebase).toHaveBeenCalledWith("groups", body);
+  });
+
+  test("id가 비어있지 않으면 getGroup은 getFirebase를 호출해야 한다", () => {
+    const id = "TEST_ID";
+    getGroup(id);
+    expect(firebaseModule.getFirebase).toHaveBeenCalledWith("groups", id);
   });
 });
 describe("Group functions with string arguments validation", () => {
