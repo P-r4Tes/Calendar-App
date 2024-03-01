@@ -15,11 +15,12 @@ type tag = {
 };
 type schedule = {
   title: string;
-  start_time: string;
-  end_time: string;
+  startTime: string;
+  endTime: string;
   tags: string[];
   description: string;
-  users: string[];
+  isPersonal: boolean;
+  group: string | null;
 };
 
 type group = {

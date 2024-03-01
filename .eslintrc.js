@@ -55,7 +55,16 @@ module.exports = {
     "new-cap": ["error", { newIsCap: true }],
     "no-unused-vars": ["error", { args: "none" }],
     "no-use-before-define": ["error", { functions: false, classes: true }],
-    "comma-dangle": ["error", "always-multiline"],
+    "comma-dangle": [
+      "error",
+      {
+        arrays: "always-multiline",
+        objects: "always-multiline",
+        imports: "always-multiline",
+        exports: "always-multiline",
+        functions: "never",
+      },
+    ],
     "no-console": "off",
     "no-debugger": "error",
     "no-trailing-spaces": "error",
