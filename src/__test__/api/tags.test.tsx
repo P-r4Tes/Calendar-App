@@ -1,10 +1,11 @@
 // tag.test.ts 파일
-import { getTag, postTag, updateTagColor, updateTagTitle } from "@/api/tags";
+import { deleteTag, getTag, postTag, updateTagColor, updateTagTitle } from "@/api/tags";
 import * as firebaseModule from "@/api/firebase";
 
 jest.mock("@/api/firebase", () => ({
   ...jest.requireActual("@/api/firebase"),
   postFirebase: jest.fn(),
+  deleteFirebase: jest.fn(),
   getFirebase: jest.fn(),
   updateFirebaseField: jest.fn(),
 }));
@@ -29,17 +30,15 @@ describe("postTag function", () => {
     postTag(tag);
     expect(firebaseModule.postFirebase).toHaveBeenCalledWith("tags", tag);
   });
-});
-
-describe("getTag function", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   test("id가 비어있지 않으면 getTag는 getFirebase를 호출해야 한다", () => {
     const id = "TEST_ID";
     getTag(id);
     expect(firebaseModule.getFirebase).toHaveBeenCalledWith("tags", id);
+  });
+  test("id가 비어있지 않으면 deleteTag는 deleteFirebase를 호출해야 한다", () => {
+    const id = "TEST_ID";
+    deleteTag(id);
+    expect(firebaseModule.deleteFirebase).toHaveBeenCalledWith("tags", id);
   });
 });
 

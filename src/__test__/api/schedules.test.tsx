@@ -1,10 +1,11 @@
 import * as firebaseModule from "@/api/firebase";
-import { getSchedule, popScheduleTag, postSchedule, pushScheduleTag } from "@/api/schedules";
+import { deleteSchedule, getSchedule, popScheduleTag, postSchedule, pushScheduleTag } from "@/api/schedules";
 
 jest.mock("@/api/firebase", () => ({
   ...jest.requireActual("@/api/firebase"),
   postFirebase: jest.fn(),
   getFirebase: jest.fn(),
+  deleteFirebase: jest.fn(),
   pushFirebaseArray: jest.fn(),
   popFirebaseArray: jest.fn(),
 }));
@@ -37,6 +38,12 @@ describe("postSchedule function", () => {
     const id = "TEST_ID";
     getSchedule(id);
     expect(firebaseModule.getFirebase).toHaveBeenCalledWith("schedules", id);
+  });
+
+  test("id가 비어있지 않으면 deleteSchedule는 deleteFirebase를 호출해야 한다", () => {
+    const id = "TEST_ID";
+    deleteSchedule(id);
+    expect(firebaseModule.deleteFirebase).toHaveBeenCalledWith("schedules", id);
   });
 });
 

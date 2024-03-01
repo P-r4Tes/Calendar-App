@@ -1,5 +1,5 @@
 import { db } from "@/lib/firebaseConfig";
-import { addDoc, arrayRemove, arrayUnion, collection, doc, getDoc, updateDoc } from "firebase/firestore";
+import { addDoc, arrayRemove, arrayUnion, collection, deleteDoc, doc, getDoc, updateDoc } from "firebase/firestore";
 
 export const postFirebase = async <T extends TableTypes>(table: T, body: TalbeField<T>) => {
   try {
@@ -20,6 +20,14 @@ export const getFirebase = async <T extends TableTypes>(table: T, id: string) =>
     }
   } catch (e) {
     console.error("Error getting document: ", e);
+  }
+};
+
+export const deleteFirebase = async <T extends TableTypes>(table: T, id: string) => {
+  try {
+    await deleteDoc(doc(db, table, id));
+  } catch (e) {
+    console.error("Error adding document: ", e);
   }
 };
 

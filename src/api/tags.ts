@@ -1,5 +1,5 @@
 import { isEmpty } from "@/lib/functions/stringValidation";
-import { getFirebase, postFirebase, updateFirebaseField } from "./firebase";
+import { deleteFirebase, getFirebase, postFirebase, updateFirebaseField } from "./firebase";
 
 export const postTag = (body: tag) => {
   if (isEmpty(body.color)) throw new Error("Invalid color Data");
@@ -10,6 +10,11 @@ export const postTag = (body: tag) => {
 export const getTag = (id: string) => {
   if (isEmpty(id)) throw new Error("Invalid id");
   return getFirebase<"tags">("tags", id);
+};
+
+export const deleteTag = (id: string) => {
+  if (isEmpty(id)) throw new Error("Invalid id");
+  return deleteFirebase<"tags">("tags", id);
 };
 
 export const updateTagTitle = (id: string, title: string) => {

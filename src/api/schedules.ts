@@ -1,5 +1,5 @@
 import { isEmpty, isStringArgumentsValid } from "@/lib/functions/stringValidation";
-import { getFirebase, popFirebaseArray, postFirebase, pushFirebaseArray } from "./firebase";
+import { deleteFirebase, getFirebase, popFirebaseArray, postFirebase, pushFirebaseArray } from "./firebase";
 
 export const postSchedule = (body: schedule) => {
   const { description, endTime, startTime, title } = body;
@@ -10,6 +10,11 @@ export const postSchedule = (body: schedule) => {
 export const getSchedule = (id: string) => {
   if (isEmpty(id)) throw new Error("Invalid id");
   return getFirebase<"schedules">("schedules", id);
+};
+
+export const deleteSchedule = (id: string) => {
+  if (isEmpty(id)) throw new Error("Invalid id");
+  return deleteFirebase<"schedules">("schedules", id);
 };
 
 export const pushScheduleTag = (id: string, value: string) => {

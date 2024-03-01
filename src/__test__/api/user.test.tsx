@@ -7,12 +7,14 @@ import {
   popUserGroup,
   updateUserName,
   getUser,
+  deleteUser,
 } from "@/api/users";
 
 jest.mock("@/api/firebase", () => ({
   ...jest.requireActual("@/api/firebase"),
   postFirebase: jest.fn(),
   getFirebase: jest.fn(),
+  deleteFirebase: jest.fn(),
   pushFirebaseArray: jest.fn(),
   popFirebaseArray: jest.fn(),
   updateFirebaseField: jest.fn(),
@@ -32,6 +34,12 @@ describe("User functions", () => {
     const id = "TEST_ID";
     getUser(id);
     expect(firebaseModule.getFirebase).toHaveBeenCalledWith("users", id);
+  });
+
+  test("id가 비어있지 않으면 deleteUser는 deleteFirebase를 호출해야 한다", () => {
+    const id = "TEST_ID";
+    deleteUser(id);
+    expect(firebaseModule.deleteFirebase).toHaveBeenCalledWith("users", id);
   });
 
   test("name이 비어있지 않으면 postUser는 postFirebase를 호출해야 한다", () => {
