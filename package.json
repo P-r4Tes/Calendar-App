@@ -10,6 +10,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "prepare": "husky",
+    "prettify": "prettier --write **/*.ts **/*.tsx",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

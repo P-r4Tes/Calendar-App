@@ -1,6 +1,5 @@
 "use client";
 
-import { registUser } from "@/api/user";
 import { dummy } from "@/constants/dummy";
 import { db } from "@/lib/firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
@@ -18,9 +17,7 @@ export default function Home() {
     fetchData();
   }, []);
   const handleButton = () => {
-    dummy.users.forEach(tag => {
-      registUser({ name: tag.name });
-    });
+    dummy.users.forEach(tag => {});
   };
 
   return (
