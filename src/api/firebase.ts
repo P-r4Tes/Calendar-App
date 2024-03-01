@@ -6,7 +6,7 @@ export const postFirebase = async <T extends TableTypes>(table: T, body: TalbeFi
     const docRef = await addDoc(collection(db, table), body);
     console.log("Document written with ID: ", docRef.id);
   } catch (e) {
-    console.error("Error adding document: ", e);
+    console.error("Invalid Data");
   }
 };
 

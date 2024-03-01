@@ -9,7 +9,7 @@ const config: Config = {
   coverageProvider: "babel",
   testEnvironment: "jsdom",
   moduleNameMapper: {
-    "^@/components/(.*)$": "<rootDir>/components/$1",
+    "^@/(.*)$": "<rootDir>/src/$1",
   },
 };
 
