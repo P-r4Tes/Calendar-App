@@ -6,6 +6,8 @@ type id = { id: string };
 
 type user = {
   name: string;
+  groups: string[];
+  personalSchedules: string[];
 };
 type tag = {
   title: string;
@@ -22,6 +24,8 @@ type schedule = {
 
 type group = {
   users: string[];
+  schedules: string[];
+  name: string;
 };
 
 type TalbeField<T> = T extends "users"
