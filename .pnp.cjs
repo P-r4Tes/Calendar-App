@@ -44,6 +44,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react-dom", "npm:18.2.19"],\
           ["@yarnpkg/plugin-typescript", "virtual:e5cf16538da1faac25b1dff8ac92309daef107e61c202aecd5e26ea798f052ebf3f59fcee0fbffb7c23e7c78a9b2ef876a35e350471ce1f34deac301cb2c44a3#npm:4.0.0"],\
           ["autoprefixer", "virtual:e5cf16538da1faac25b1dff8ac92309daef107e61c202aecd5e26ea798f052ebf3f59fcee0fbffb7c23e7c78a9b2ef876a35e350471ce1f34deac301cb2c44a3#npm:10.4.17"],\
+          ["chromatic", "virtual:e5cf16538da1faac25b1dff8ac92309daef107e61c202aecd5e26ea798f052ebf3f59fcee0fbffb7c23e7c78a9b2ef876a35e350471ce1f34deac301cb2c44a3#npm:11.0.0"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:e5cf16538da1faac25b1dff8ac92309daef107e61c202aecd5e26ea798f052ebf3f59fcee0fbffb7c23e7c78a9b2ef876a35e350471ce1f34deac301cb2c44a3#npm:14.1.0"],\
           ["eslint-plugin-storybook", "virtual:e5cf16538da1faac25b1dff8ac92309daef107e61c202aecd5e26ea798f052ebf3f59fcee0fbffb7c23e7c78a9b2ef876a35e350471ce1f34deac301cb2c44a3#npm:0.8.0"],\
@@ -9904,6 +9905,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react-dom", "npm:18.2.19"],\
           ["@yarnpkg/plugin-typescript", "virtual:e5cf16538da1faac25b1dff8ac92309daef107e61c202aecd5e26ea798f052ebf3f59fcee0fbffb7c23e7c78a9b2ef876a35e350471ce1f34deac301cb2c44a3#npm:4.0.0"],\
           ["autoprefixer", "virtual:e5cf16538da1faac25b1dff8ac92309daef107e61c202aecd5e26ea798f052ebf3f59fcee0fbffb7c23e7c78a9b2ef876a35e350471ce1f34deac301cb2c44a3#npm:10.4.17"],\
+          ["chromatic", "virtual:e5cf16538da1faac25b1dff8ac92309daef107e61c202aecd5e26ea798f052ebf3f59fcee0fbffb7c23e7c78a9b2ef876a35e350471ce1f34deac301cb2c44a3#npm:11.0.0"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:e5cf16538da1faac25b1dff8ac92309daef107e61c202aecd5e26ea798f052ebf3f59fcee0fbffb7c23e7c78a9b2ef876a35e350471ce1f34deac301cb2c44a3#npm:14.1.0"],\
           ["eslint-plugin-storybook", "virtual:e5cf16538da1faac25b1dff8ac92309daef107e61c202aecd5e26ea798f052ebf3f59fcee0fbffb7c23e7c78a9b2ef876a35e350471ce1f34deac301cb2c44a3#npm:0.8.0"],\
@@ -10102,6 +10104,32 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../../.yarn/berry/cache/chownr-npm-2.0.0-638f1c9c61-10c0.zip/node_modules/chownr/",\
         "packageDependencies": [\
           ["chownr", "npm:2.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["chromatic", [\
+      ["npm:11.0.0", {\
+        "packageLocation": "../../../../.yarn/berry/cache/chromatic-npm-11.0.0-f3d3e3bf49-10c0.zip/node_modules/chromatic/",\
+        "packageDependencies": [\
+          ["chromatic", "npm:11.0.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:e5cf16538da1faac25b1dff8ac92309daef107e61c202aecd5e26ea798f052ebf3f59fcee0fbffb7c23e7c78a9b2ef876a35e350471ce1f34deac301cb2c44a3#npm:11.0.0", {\
+        "packageLocation": "./.yarn/__virtual__/chromatic-virtual-76bda52f61/5/.yarn/berry/cache/chromatic-npm-11.0.0-f3d3e3bf49-10c0.zip/node_modules/chromatic/",\
+        "packageDependencies": [\
+          ["chromatic", "virtual:e5cf16538da1faac25b1dff8ac92309daef107e61c202aecd5e26ea798f052ebf3f59fcee0fbffb7c23e7c78a9b2ef876a35e350471ce1f34deac301cb2c44a3#npm:11.0.0"],\
+          ["@chromatic-com/cypress", null],\
+          ["@chromatic-com/playwright", null],\
+          ["@types/chromatic-com__cypress", null],\
+          ["@types/chromatic-com__playwright", null]\
+        ],\
+        "packagePeers": [\
+          "@chromatic-com/cypress",\
+          "@chromatic-com/playwright",\
+          "@types/chromatic-com__cypress",\
+          "@types/chromatic-com__playwright"\
         ],\
         "linkType": "HARD"\
       }]\
