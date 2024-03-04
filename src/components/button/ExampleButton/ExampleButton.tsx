@@ -35,7 +35,7 @@ export const ExampleButton = ({
   ...props
 }: ExampleButtonProps) => {
   console.log(primary, size, backgroundColor);
-  
+
   return (
     <button type="button" {...props}>
       {label}
