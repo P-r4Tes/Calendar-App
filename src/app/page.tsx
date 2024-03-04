@@ -4,6 +4,7 @@ import { getGroup } from "@/api/groups";
 import { getSchedule } from "@/api/schedules";
 import { getTag } from "@/api/tags";
 import { getUser } from "@/api/users";
+import Calendar from "@/components/Calendar/Calendar";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -23,8 +24,8 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex min-h-screen" data-testid="root-layout">
-      <h1>Calendar App</h1>
+    <main className="flex flex-col min-h-screen" data-testid="root-layout">
+      <Calendar />
     </main>
   );
 }
