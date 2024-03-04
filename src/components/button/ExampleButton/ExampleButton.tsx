@@ -26,7 +26,7 @@ interface ExampleButtonProps {
 /**
  * Primary UI component for user interaction
  */
-export const ExampleButton = ({ primary = false, size = "medium", backgroundColor, label, ...props }: ButtonProps) => {
+export const ExampleButton = ({ primary = false, size = "medium", backgroundColor, label, ...props }: ExampleButtonProps) => {
 
   return (
     <button type="button"  {...props}>
