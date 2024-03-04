@@ -1,7 +1,7 @@
 import React from "react";
-import "./button.css";
+import "./ExampleButton.css";
 
-interface ButtonProps {
+interface ExampleButtonProps {
   /**
    * Is this the principal call to action on the page?
    */
@@ -27,7 +27,7 @@ interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary = false, size = "medium", backgroundColor, label, ...props }: ButtonProps) => {
+export const ExampleButton = ({ primary = false, size = "medium", backgroundColor, label, ...props }: ButtonProps) => {
   const mode = primary ? "storybook-button--primary" : "storybook-button--secondary";
   return (
     <button type="button" className={["storybook-button", `storybook-button--${size}`, mode].join(" ")} {...props}>
