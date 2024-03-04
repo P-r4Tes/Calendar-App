@@ -26,7 +26,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24" data-testid="root-layout">
       <h1>Calendar App</h1>
       <button onClick={() => handleButton()}>안녕하세요?</button>
     </main>
