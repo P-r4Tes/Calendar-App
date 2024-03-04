@@ -1,5 +1,5 @@
 import React from "react";
-import "./ExampleButton.css";
+import "./ExampleButton.module.css";
 
 interface ExampleButtonProps {
   /**
@@ -32,6 +32,9 @@ export const ExampleButton = ({ primary = false, size = "medium", backgroundColo
   return (
     <button type="button" className={["storybook-button", `storybook-button--${size}`, mode].join(" ")} {...props}>
       {label}
+      <h1 className="text-3xl font-bold underline">
+      Hello world!
+      </h1>
       <style jsx>{`
         button {
           background-color: ${backgroundColor};

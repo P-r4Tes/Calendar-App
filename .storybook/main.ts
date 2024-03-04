@@ -11,12 +11,22 @@ function getAbsolutePath(value: string): any {
 }
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  staticDir: ['../public'],
   addons: [
     getAbsolutePath("@storybook/addon-links"),
     getAbsolutePath("@storybook/addon-essentials"),
     getAbsolutePath("@storybook/addon-onboarding"),
     getAbsolutePath("@storybook/addon-interactions"),
+    {
+      name: getAbsolutePath("@storybook/addon-postcss"),
+      options: {
+        postcssLoaderOptions: {
+          implementation: require('postcss'),
+        },
+      },
+    },
   ],
+
   framework: {
     name: getAbsolutePath("@storybook/nextjs"),
     options: {},
