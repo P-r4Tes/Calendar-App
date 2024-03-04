@@ -21,14 +21,10 @@ export default function Home() {
 
     fetchData();
   }, []);
-  const handleButton = () => {
-    console.log("안녕하세요?");
-  };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24" data-testid="root-layout">
+    <main className="flex min-h-screen" data-testid="root-layout">
       <h1>Calendar App</h1>
-      <button onClick={() => handleButton()}>안녕하세요?</button>
     </main>
   );
 }

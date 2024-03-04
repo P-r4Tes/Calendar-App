@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "@/components/Header/Header";
+import Sidebar from "@/components/Sidebar/Sidebar";
 
 export const metadata: Metadata = {
   title: "Calendar App",
@@ -13,7 +15,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body className="flex">
+        <Sidebar />
+        <div className="flex flex-col flex-1">
+          <Header />
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
