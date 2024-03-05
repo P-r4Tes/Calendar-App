@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import fireAuth from '../../firebase/fireAuth';
+import { auth } from '@/lib/firebaseConfig';
 import styles from './Form.module.css'; // CSS 모듈
 
 export default function SignupForm() {
@@ -10,7 +10,7 @@ export default function SignupForm() {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      await createUserWithEmailAndPassword(fireAuth, email, password);
+      await createUserWithEmailAndPassword(auth, email, password);
       alert("회원가입에 성공했습니다!");
     } catch (error) {
       alert("회원가입에 실패했습니다.");

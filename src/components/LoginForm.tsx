@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import fireAuth from '../../firebase/fireAuth';
+import { auth } from "@/lib/firebaseConfig";
 import styles from './Form.module.css'; // CSS 모듈
 
 export default function LoginForm() {
@@ -10,7 +10,7 @@ export default function LoginForm() {
   const handleEmailLogin = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(fireAuth, email, password);
+      await signInWithEmailAndPassword(auth, email, password);
       alert("이메일 로그인에 성공했습니다!");
     } catch (error) {
       alert("이메일 로그인에 실패했습니다.");
@@ -20,7 +20,7 @@ export default function LoginForm() {
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
     try {
-      await signInWithPopup(fireAuth, provider);
+      await signInWithPopup(auth, provider);
       alert("구글 로그인에 성공했습니다!");
     } catch (error) {
       alert("구글 로그인에 실패했습니다.");
