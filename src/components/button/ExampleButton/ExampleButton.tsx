@@ -1,7 +1,6 @@
 import React from "react";
-import "./button.css";
 
-interface ButtonProps {
+interface ExampleButtonProps {
   /**
    * Is this the principal call to action on the page?
    */
@@ -27,16 +26,24 @@ interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary = false, size = "medium", backgroundColor, label, ...props }: ButtonProps) => {
-  const mode = primary ? "storybook-button--primary" : "storybook-button--secondary";
+//  test
+export const ExampleButton = ({
+  primary = false,
+  size = "medium",
+  backgroundColor,
+  label,
+  ...props
+}: ExampleButtonProps) => {
+  console.log(primary, size, backgroundColor);
+
   return (
-    <button type="button" className={["storybook-button", `storybook-button--${size}`, mode].join(" ")} {...props}>
+    <button type="button" {...props}>
       {label}
-      <style jsx>{`
-        button {
-          background-color: ${backgroundColor};
-        }
-      `}</style>
+      <h1 className="text-3xl font-bold underline">
+        {" "}
+        {/*스토리북 실행 이후 해당 스타일이 적용되는 것을 확인 할 수 있습니다.*/}
+        Hello world!
+      </h1>
     </button>
   );
 };
