@@ -24,7 +24,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex flex-col min-h-screen" data-testid="root-layout">
+    <main className="flex flex-col min-h-full" data-testid="root-layout">
       <Calendar />
     </main>
   );
