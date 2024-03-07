@@ -1,5 +1,6 @@
 import React from "react";
 import Group from "@/components/Sidebar/Group";
+import AddGroup from "@/components/Sidebar/AddGroup";
 import { headers } from "next/headers";
 
 type SidebarProps = { groups: group[] };
@@ -23,6 +24,7 @@ const Sidebar = ({ groups }: SidebarProps) => {
             const selected = headerPathname.includes(group.name);
             return <Group name={group.name} href={`${group.name}`} selected={selected} />;
           })}
+          <AddGroup href="." />
         </div>
       </aside>
     </div>
