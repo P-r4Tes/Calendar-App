@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header/Header";
-import Sidebar from "@/components/Sidebar/Sidebar";
+import { Suspense } from "react";
+import SidebarContainer from "@/components/Sidebar/SidebarContainer";
 
 export const metadata: Metadata = {
   title: "Calendar App",
@@ -16,7 +17,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="flex">
-        <Sidebar />
+        <Suspense>
+          <SidebarContainer />
+        </Suspense>
+
         <div className="flex flex-col flex-1">
           <Header />
           {children}

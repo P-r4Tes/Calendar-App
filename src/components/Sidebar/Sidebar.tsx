@@ -1,28 +1,32 @@
-import React from "react";
+"use client";
+import React, { MouseEventHandler, useState } from "react";
 import Group from "@/components/Sidebar/Group";
 import AddGroup from "@/components/Sidebar/AddGroup";
-import { headers } from "next/headers";
 
-type SidebarProps = { groups: group[] };
+type SidebarProps = {
+  groups: (group & id)[];
+};
 const Sidebar = ({ groups }: SidebarProps) => {
+  const [selectedIdx, setSelectedIdx] = useState(0);
   const height = groups.length * 80 + 80;
 
-  const isServer = typeof window === "undefined";
-  let headerPathname = "";
-
-  if (isServer) {
-    const headersList = headers();
-    headerPathname = headersList.get("x-pathname") || "";
-  } else {
-    headerPathname = window.location.pathname;
-  }
   return (
     <div className="flex h-screen">
       <aside className={"flex items-center w-20 bg-[#383A57] rounded-l-3xl"} style={{ height: height }}>
         <div className="flex flex-col items-center space-y-4 p-4">
-          {groups.map(group => {
-            const selected = headerPathname.includes(group.name);
-            return <Group name={group.name} href={`${group.name}`} selected={selected} />;
+          {groups.map((group, idx) => {
+            const onSelect: MouseEventHandler<HTMLAnchorElement> = e => {
+              setSelectedIdx(idx);
+            };
+            return (
+              <Group
+                key={group.id}
+                name={group.name}
+                href={group.id}
+                selected={idx === selectedIdx}
+                onSelect={onSelect}
+              />
+            );
           })}
           <AddGroup href="." />
         </div>
