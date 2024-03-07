@@ -15,7 +15,7 @@ const Sidebar = ({ groups }: SidebarProps) => {
       <aside className={"flex items-center w-20 bg-[#383A57] rounded-l-3xl"} style={{ height: height }}>
         <div className="flex flex-col items-center space-y-4 p-4">
           {groups.map((group, idx) => {
-            const onSelect: MouseEventHandler<HTMLAnchorElement> = e => {
+            const onSelect: MouseEventHandler<HTMLAnchorElement> = () => {
               setSelectedIdx(idx);
             };
             return (
