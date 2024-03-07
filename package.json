@@ -12,7 +12,8 @@
     "prepare": "husky",
     "prettify": "prettier --write **/*.ts **/*.tsx ",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "install": "yarn husky"
   },
   "dependencies": {
     "@yarnpkg/plugin-typescript": "^4.0.0",
