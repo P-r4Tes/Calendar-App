@@ -1,4 +1,4 @@
-import { generateCalendar } from "@/lib/functions/calendar";
+import { generateCalendar } from "../../lib/functions/calendar";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";

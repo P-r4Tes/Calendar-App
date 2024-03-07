@@ -6,8 +6,8 @@ import MonthBody from "./MonthBody";
 import { useRouter, useSearchParams } from "next/navigation";
 
 const MonthView = () => {
-  const month = useSearchParams().get("month") as string;
-  const year = useSearchParams().get("year") as string;
+  const month = useSearchParams()?.get("month") as string;
+  const year = useSearchParams()?.get("year") as string;
   const router = useRouter();
   function handleScroll(e: React.WheelEvent<HTMLElement>) {
     let NEW_MONTH = Number(month);
