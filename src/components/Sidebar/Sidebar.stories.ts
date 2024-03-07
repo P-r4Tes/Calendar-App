@@ -16,8 +16,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    user: {
-      name: "Jane Doe",
-    },
+    groups: [
+      {
+        name: "샘플",
+        users: ["user1"],
+        schedules: ["schedules"],
+      },
+    ],
   },
 };
