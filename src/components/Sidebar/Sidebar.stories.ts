@@ -18,6 +18,7 @@ export const Default: Story = {
   args: {
     groups: [
       {
+        id: "test1",
         name: "샘플",
         users: ["user1"],
         schedules: ["schedules"],
