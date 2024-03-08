@@ -1,7 +1,8 @@
-import { generateCalendar } from "../../lib/functions/calendar";
+import { generateCalendar } from "@/lib/functions/calendar";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
+import MonthUnit from "./MonthUnit";
 
 function MonthBody() {
   const [date, setDate] = useState<Date>(new Date());
@@ -14,7 +15,6 @@ function MonthBody() {
     const YEAR = Number(year);
     const MONTH = Number(month);
     const invalidDate = () => {
-      alert("올바르지 않은 날짜입니다.");
       const now = new Date();
       const year = now.getFullYear();
       const month = now.getMonth() + 1;
@@ -53,8 +53,8 @@ function MonthBody() {
           {randerRange.map((week, index) => (
             <div key={index} className="flex flex-1 divide-x-[1px] ">
               {week.map((day, index) => (
-                <div key={index} className="flex flex-1">
-                  {day}
+                <div key={index} className="flex flex-col flex-1">
+                  <MonthUnit day={day} />
                 </div>
               ))}
             </div>

@@ -2,13 +2,13 @@
 
 import React from "react";
 
-const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const days = ["일", "월", "화", "수", "목", "금", "토"];
 
 const MonthHeader = () => {
   return (
     <div className="flex w-full divide-x-[1px] border-b">
       {days.map((day, index) => (
-        <div key={index} className="flex-1">
+        <div key={index} className="flex flex-1 justify-end">
           {day}
         </div>
       ))}
