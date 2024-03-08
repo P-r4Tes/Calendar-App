@@ -4,6 +4,7 @@ import { getGroup } from "@/api/groups";
 import { getSchedule } from "@/api/schedules";
 import { getTag } from "@/api/tags";
 import { getUser } from "@/api/users";
+import Calendar from "@/components/Calendar/Calendar";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -21,14 +22,10 @@ export default function Home() {
 
     fetchData();
   }, []);
-  const handleButton = () => {
-    console.log("안녕하세요?");
-  };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>Calendar App</h1>
-      <button onClick={() => handleButton()}>안녕하세요?</button>
+    <main className="flex flex-col min-h-screen" data-testid="root-layout">
+      <Calendar />
     </main>
   );
 }

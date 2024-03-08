@@ -6,7 +6,7 @@ describe("Page", () => {
   it("renders a heading", () => {
     render(<Page />);
 
-    const Text = screen.getByText("Calendar App");
-    expect(Text).toBeVisible();
+    const Element = screen.getByTestId("root-layout");
+    expect(Element).toBeInTheDocument();
   });
 });
