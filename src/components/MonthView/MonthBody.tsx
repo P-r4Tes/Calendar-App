@@ -1,48 +1,67 @@
 import { generateCalendar } from "@/lib/functions/calendar";
 import { useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import React, { useState, useEffect } from "react";
 
 function MonthBody() {
   const [date, setDate] = useState<Date>(new Date());
   const month = useSearchParams().get("month") as string;
   const year = useSearchParams().get("year") as string;
-  if (year !== null && month !== null) {
+  const [randerRange, setRanderRange] = useState<string[][] | null>(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    const YEAR = Number(year);
+    const MONTH = Number(month);
+    const invalidDate = () => {
+      alert("올바르지 않은 날짜입니다.");
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth() + 1;
+      router.push(`/?view=month&year=${year}&month=${month}`);
+    };
+
+    if (YEAR >= 2100 || YEAR <= 2000 || MONTH >= 13 || MONTH <= 0) return invalidDate();
+
     const newData = new Date(parseInt(year), parseInt(month) - 1, 1);
     setDate(newData);
-  }
+  }, [month, year]);
 
-  function getWeekCount(date: Date) {
-    if (!date) throw new Error("날짜가 입력되지 않았습니다!");
+  useEffect(() => {
+    setRanderRange(generateCalendar(date));
+  }, [date]);
 
-    const { firstDay, lastDay } = getFirstAndLastDay(date);
-    const lastDate = lastDay.getDate();
-    const firstDayOfWeek = firstDay.getDay();
-
-    if (lastDate === 28 && firstDayOfWeek === 0) return 4;
-    else if (lastDate === 31 && (firstDayOfWeek === 5 || firstDayOfWeek === 6)) return 6;
-    else if (lastDate === 30 && firstDayOfWeek === 6) return 6;
-    else return 5;
-  }
-  function getFirstAndLastDay(date: Date) {
-    const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-    return { firstDay, lastDay };
-  }
-
-  function rangeGenerator() {
-    // if (date === undefined) throw new Error("Date setting Logic Error !");
-    const totalLine = getWeekCount(date);
-    const alpha = generateCalendar(date, totalLine);
-    console.log(alpha);
-    return 2;
-  }
-  console.log(rangeGenerator());
   return (
-    <div>
-      <ul>
-        <li>test</li>
-      </ul>
-    </div>
+    <section className="flex-1">
+      {randerRange === null && (
+        <div className="flex flex-col h-full">
+          {Array(6)
+            .fill(0)
+            .map((_, index) => (
+              <div key={index} className="flex flex-1">
+                {Array(7)
+                  .fill(0)
+                  .map((_, index) => (
+                    <div key={index} className="flex flex-1 border border-gray-200"></div>
+                  ))}
+              </div>
+            ))}
+        </div>
+      )}
+      {randerRange && (
+        <div className="flex flex-col h-full divide-y-[1px]">
+          {randerRange.map((week, index) => (
+            <div key={index} className="flex flex-1 divide-x-[1px] ">
+              {week.map((day, index) => (
+                <div key={index} className="flex flex-1">
+                  {day}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
   );
 }
 

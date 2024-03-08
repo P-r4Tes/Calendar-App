@@ -11,7 +11,7 @@ type CalendarPageProps = {
 };
 export default function Home({ searchParams }: CalendarPageProps) {
   return (
-    <main className="flex flex-col min-h-full" data-testid="root-layout">
+    <main className="flex flex-col flex-1" data-testid="root-layout">
       <Calendar searchParams={searchParams} />
     </main>
   );

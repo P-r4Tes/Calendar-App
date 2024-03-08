@@ -6,14 +6,14 @@ const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 const MonthHeader = () => {
   return (
-    <ol className="flex w-full">
+    <div className="flex w-full divide-x-[1px] border-b">
       {days.map((day, index) => (
-        <li key={index} className="flex-1">
+        <div key={index} className="flex-1">
           {day}
-        </li>
+        </div>
       ))}
-    </ol>
+    </div>
   );
 };
 
-export default MonthHeader;
+export default React.memo(MonthHeader);

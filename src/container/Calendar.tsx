@@ -16,7 +16,7 @@ const Calendar = ({ searchParams }: CalendarPageProps) => {
   // const view = useSearchParams().get("view") as viewType;
   const { view } = searchParams;
 
-  return <div>{view === "month" && <MonthView />}</div>;
+  return <div className="h-full">{view === "month" && <MonthView />}</div>;
 };
 
 export default Calendar;

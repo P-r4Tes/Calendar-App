@@ -1,3 +1,22 @@
+function getFirstAndLastDay(date: Date) {
+  const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+  const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  return { firstDay, lastDay };
+}
+
+function getWeekCount(date: Date) {
+  if (!date) throw new Error("날짜가 입력되지 않았습니다!");
+
+  const { firstDay, lastDay } = getFirstAndLastDay(date);
+  const lastDate = lastDay.getDate();
+  const firstDayOfWeek = firstDay.getDay();
+
+  if (lastDate === 28 && firstDayOfWeek === 0) return 4;
+  else if (lastDate === 31 && (firstDayOfWeek === 5 || firstDayOfWeek === 6)) return 6;
+  else if (lastDate === 30 && firstDayOfWeek === 6) return 6;
+  else return 5;
+}
+
 function generateCalendarForMonth(date: Date) {
   const weeks = [];
   const { year, month } = { year: date.getFullYear(), month: date.getMonth() + 1 };
@@ -12,21 +31,19 @@ function generateCalendarForMonth(date: Date) {
 
   while (currentDate <= endDay) {
     const week = [];
-
     for (let i = 0; i < 7; i++) {
       week.push(`${currentDate.getMonth() + 1}/${currentDate.getDate()}`);
       currentDate.setDate(currentDate.getDate() + 1);
     }
-
     weeks.push(week);
   }
-
   return weeks;
 }
 
-export function generateCalendar(date: Date, weeks: number) {
+export function generateCalendar(date: Date) {
   const year = date.getFullYear();
   const month = date.getMonth();
+  const weeks = getWeekCount(date);
   const weeksArray = generateCalendarForMonth(date);
   const lastDayOfPreviousMonth = new Date(year, month, 0);
 
