@@ -9,7 +9,7 @@ jest.mock("next/navigation", () => ({
   }),
 }));
 
-describe("Monthview", () => {
+describe("Component - Monthview", () => {
   it("연월 정보가 없는 경우에도 MonthBody는 정상적으로 렌더링된다", () => {
     render(<MonthBody year={undefined} month={undefined} />);
 
