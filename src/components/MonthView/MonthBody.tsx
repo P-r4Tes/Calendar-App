@@ -1,15 +1,41 @@
+"use client";
+
 import { generateCalendar } from "@/lib/functions/calendar";
-import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
-import MonthUnit from "./MonthUnit";
+import MonthUnit from "../CalendarUnits/MonthUnit";
+import { EmptyLayout } from "./EmptyLayout";
 
-function MonthBody() {
+type MonthBodyProps = {
+  year: string | undefined;
+  month: string | undefined;
+};
+
+function MonthBody(props: MonthBodyProps) {
   const [date, setDate] = useState<Date>(new Date());
-  const month = useSearchParams().get("month") as string;
-  const year = useSearchParams().get("year") as string;
+  const month = props.month ?? new Date().getMonth().toString();
+  const year = props.year ?? new Date().getFullYear().toString();
   const [randerRange, setRanderRange] = useState<string[][] | null>(null);
   const router = useRouter();
+
+  function handleScroll(e: React.WheelEvent<HTMLElement>) {
+    let NEW_MONTH = Number(month);
+    let NEW_YEAR = Number(year);
+    if (e.deltaY > 0) {
+      NEW_MONTH += 1;
+      if (NEW_MONTH > 12) {
+        NEW_MONTH = 1;
+        NEW_YEAR += 1;
+      }
+      return router.push(`/?view=month&year=${NEW_YEAR}&month=${NEW_MONTH}`);
+    }
+    NEW_MONTH -= 1;
+    if (NEW_MONTH < 1) {
+      NEW_MONTH = 12;
+      NEW_YEAR -= 1;
+    }
+    router.push(`/?view=month&year=${NEW_YEAR}&month=${NEW_MONTH}`);
+  }
 
   useEffect(() => {
     const YEAR = Number(year);
@@ -32,22 +58,8 @@ function MonthBody() {
   }, [date]);
 
   return (
-    <section className="flex-1">
-      {randerRange === null && (
-        <div className="flex flex-col h-full">
-          {Array(6)
-            .fill(0)
-            .map((_, index) => (
-              <div key={index} className="flex flex-1">
-                {Array(7)
-                  .fill(0)
-                  .map((_, index) => (
-                    <div key={index} className="flex flex-1 border border-gray-200"></div>
-                  ))}
-              </div>
-            ))}
-        </div>
-      )}
+    <section onWheel={handleScroll} className="flex-1">
+      {randerRange === null && <EmptyLayout />}
       {randerRange && (
         <div className="flex flex-col h-full divide-y-[1px]">
           {randerRange.map((week, index) => (

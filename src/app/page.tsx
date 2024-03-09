@@ -1,4 +1,4 @@
-import Calendar from "@/container/Calendar";
+import MonthCalendar from "@/container/MonthCalendar";
 import { viewType } from "@/types/Calendar";
 
 type CalendarPageProps = {
@@ -10,9 +10,10 @@ type CalendarPageProps = {
   };
 };
 export default function Home({ searchParams }: CalendarPageProps) {
+  const { view } = searchParams;
   return (
     <main className="flex flex-col flex-1" data-testid="root-layout">
-      <Calendar searchParams={searchParams} />
+      {view && view === "month" && <MonthCalendar searchParams={searchParams} />}
     </main>
   );
 }
