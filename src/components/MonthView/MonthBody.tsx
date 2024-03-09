@@ -3,20 +3,20 @@
 import { generateCalendar } from "@/lib/functions/calendar";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
-import MonthUnit from "../CalendarUnits/MonthUnit";
 import { EmptyLayout } from "./EmptyLayout";
 import { MONTH_BODY } from "@/constants/testId";
+import { DataSpreader } from "./DateSpreader";
 
 type MonthBodyProps = {
-  year: string | undefined;
-  month: string | undefined;
+  year?: string;
+  month?: string;
 };
 
 function MonthBody(props: MonthBodyProps) {
   const [date, setDate] = useState<Date>(new Date());
   const month = props.month ?? new Date().getMonth().toString();
   const year = props.year ?? new Date().getFullYear().toString();
-  const [randerRange, setRanderRange] = useState<string[][] | null>(null);
+  const [renderRange, setRenderRange] = useState<string[][] | null>(null);
   const router = useRouter();
 
   function handleScroll(e: React.WheelEvent<HTMLElement>) {
@@ -55,25 +55,12 @@ function MonthBody(props: MonthBodyProps) {
   }, [month, year]);
 
   useEffect(() => {
-    setRanderRange(generateCalendar(date));
+    setRenderRange(generateCalendar(date));
   }, [date]);
 
   return (
     <section data-testid={MONTH_BODY} onWheel={handleScroll} className="flex-1">
-      {randerRange === null && <EmptyLayout />}
-      {randerRange && (
-        <div className="flex flex-col h-full divide-y-[1px]">
-          {randerRange.map((week, index) => (
-            <div key={index} className="flex flex-1 divide-x-[1px] ">
-              {week.map((day, index) => (
-                <div key={index} className="flex flex-col flex-1">
-                  <MonthUnit day={day} />
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      )}
+      {renderRange ? <DataSpreader renderRange={renderRange} /> : <EmptyLayout />}
     </section>
   );
 }
