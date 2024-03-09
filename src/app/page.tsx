@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import LoginForm from "@/components/LoginForm";
 import SignupForm from "@/components/SignupForm";
 import { getGroup } from "@/api/groups";
