@@ -1,5 +1,6 @@
 "use client";
-
+import LoginForm from "@/components/LoginForm";
+import SignupForm from "@/components/SignupForm";
 import { getGroup } from "@/api/groups";
 import { getSchedule } from "@/api/schedules";
 import { getTag } from "@/api/tags";
@@ -26,6 +27,8 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen" data-testid="root-layout">
       <Calendar />
+      <LoginForm />
+      <SignupForm />
     </main>
   );
 }

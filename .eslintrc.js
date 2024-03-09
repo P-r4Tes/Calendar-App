@@ -22,6 +22,8 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "eslint-config-prettier",
     "plugin:storybook/recommended",
+    "next",
+    "next/core-web-vitals",
   ],
 
   plugins: ["@typescript-eslint", "import", "prettier", "react", "react-hooks"],
