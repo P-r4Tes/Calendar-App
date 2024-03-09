@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import MonthUnit from "../CalendarUnits/MonthUnit";
 import { EmptyLayout } from "./EmptyLayout";
+import { MONTH_BODY } from "@/constants/testId";
 
 type MonthBodyProps = {
   year: string | undefined;
@@ -58,7 +59,7 @@ function MonthBody(props: MonthBodyProps) {
   }, [date]);
 
   return (
-    <section onWheel={handleScroll} className="flex-1">
+    <section data-testid={MONTH_BODY} onWheel={handleScroll} className="flex-1">
       {randerRange === null && <EmptyLayout />}
       {randerRange && (
         <div className="flex flex-col h-full divide-y-[1px]">

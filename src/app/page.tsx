@@ -1,3 +1,4 @@
+import { ROOT_ID } from "@/constants/testId";
 import MonthCalendar from "@/container/MonthCalendar";
 import { viewType } from "@/types/Calendar";
 
@@ -12,7 +13,7 @@ type CalendarPageProps = {
 export default function Home({ searchParams }: CalendarPageProps) {
   const { view } = searchParams;
   return (
-    <main className="flex flex-col flex-1" data-testid="root-layout">
+    <main className="flex flex-col flex-1" data-testid={ROOT_ID}>
       {view && view === "month" && <MonthCalendar searchParams={searchParams} />}
     </main>
   );
