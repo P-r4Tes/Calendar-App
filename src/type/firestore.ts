@@ -5,6 +5,7 @@ type TableTypes = "users" | "tags" | "schedules" | "groups";
 type id = { id: string };
 
 type user = {
+  email: string;
   name: string;
   groups: string[];
   personalSchedules: string[];
