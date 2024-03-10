@@ -1,9 +1,10 @@
 import { db } from "@/lib/firebaseConfig";
-import { arrayRemove, arrayUnion, collection, deleteDoc, doc, getDoc, updateDoc, addDoc } from "firebase/firestore";
+import { addDoc, arrayRemove, arrayUnion, collection, deleteDoc, doc, getDoc, updateDoc } from "firebase/firestore";
 
 // 조건부 파라미터를 추가하고 addDoc을 바꾸고 둘다 해야한다.
-export const postFirebase = async <T extends TableTypes>(table: T, id: string, body: TalbeField<T>) => {
+export const postFirebase = async <T extends TableTypes>(table: T, body: TalbeField<T>, id?: string) => {
   try {
+    if (id === undefined) return await addDoc(collection(db, table), body);
     await addDoc(collection(db, table), { ...body, id });
   } catch (e) {
     console.error("Invalid Data");
