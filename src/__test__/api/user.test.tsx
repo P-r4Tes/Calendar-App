@@ -25,9 +25,10 @@ describe("User functions", () => {
     jest.clearAllMocks();
   });
 
-  test("name이 비어있으면 postUser는 에러를 반환해야 한다", () => {
-    const body = { name: "", groups: ["g1"], personalSchedules: ["s1"] };
-    expect(() => postUser(body)).toThrow("Invalid name");
+  test("email 비어있으면 postUser는 에러를 반환해야 한다", () => {
+    const id = "TEST_USER_ID"; // id 추가
+    const body = { email: "", name: "name", groups: ["g1"], personalSchedules: ["s1"] };
+    expect(() => postUser(id, body)).toThrow("Invalid email");
   });
 
   test("id가 비어있지 않으면 getUser는 getFirebase를 호출해야 한다", () => {
@@ -42,10 +43,11 @@ describe("User functions", () => {
     expect(firebaseModule.deleteFirebase).toHaveBeenCalledWith("users", id);
   });
 
-  test("name이 비어있지 않으면 postUser는 postFirebase를 호출해야 한다", () => {
-    const body = { name: "CSKIM", groups: ["g1"], personalSchedules: ["s1"] };
-    postUser(body);
-    expect(firebaseModule.postFirebase).toHaveBeenCalledWith("users", body);
+  test("email이 비어있지 않으면 postUser는 postFirebase를 호출해야 한다", () => {
+    const id = "TEST_USER_ID"; // id 추가
+    const body = { email: "email@website.com", name: "CSKIM", groups: ["g1"], personalSchedules: ["s1"] };
+    postUser(id, body);
+    expect(firebaseModule.postFirebase).toHaveBeenCalledWith("users", id, body);
   });
 
   test("전달인자가 유효하지 않다면 pushUserPersonalSchedule는 에러를 반환해야 한다", () => {
