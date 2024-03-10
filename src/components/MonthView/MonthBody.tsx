@@ -2,7 +2,7 @@
 
 import { generateCalendar } from "@/lib/functions/calendar";
 import { useRouter } from "next/navigation";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { EmptyLayout } from "./EmptyLayout";
 import { MONTH_BODY } from "@/constants/testId";
 import { DataSpreader } from "./DateSpreader";
@@ -52,6 +52,7 @@ function MonthBody(props: MonthBodyProps) {
 
     const newData = new Date(parseInt(year), parseInt(month) - 1, 1);
     setDate(newData);
+    // eslint-disable-next-line
   }, [month, year]);
 
   useEffect(() => {
