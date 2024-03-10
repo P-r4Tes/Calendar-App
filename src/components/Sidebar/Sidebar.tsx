@@ -2,6 +2,7 @@
 import React, { MouseEventHandler, useState } from "react";
 import Group from "@/components/Sidebar/Group";
 import AddGroup from "@/components/Sidebar/AddGroup";
+import Pointer from "@/components/Sidebar/Pointer";
 
 type SidebarProps = {
   groups: (group & id)[];
@@ -9,10 +10,11 @@ type SidebarProps = {
 const Sidebar = ({ groups }: SidebarProps) => {
   const [selectedIdx, setSelectedIdx] = useState(0);
   const height = groups.length * 80 + 80;
+  const pointerY = 16 + selectedIdx * 64 + 28;
 
   return (
     <div className="flex h-screen">
-      <aside className={"flex items-center w-20 bg-[#383A57] rounded-l-3xl"} style={{ height: height }}>
+      <aside className={"relative flex items-center w-20 bg-[#383A57] rounded-l-3xl"} style={{ height: height }}>
         <div className="flex flex-col items-center space-y-4 p-4">
           {groups.map((group, idx) => {
             const onSelect: MouseEventHandler<HTMLAnchorElement> = () => {
@@ -29,6 +31,7 @@ const Sidebar = ({ groups }: SidebarProps) => {
             );
           })}
           <AddGroup href="." />
+          <Pointer top={pointerY} />
         </div>
       </aside>
     </div>
