@@ -8,9 +8,9 @@ import {
   updateFirebaseField,
 } from "./firebase";
 
-export const postUser = (body: user) => {
-  if (isEmpty(body.name)) throw new Error("Invalid name");
-  postFirebase<"users">("users", body);
+export const postUser = (id: string, body: user) => {
+  if (isEmpty(body.email)) throw new Error("Invalid email");
+  postFirebase<"users">("users", id, body);
 };
 
 export const getUser = (id: string) => {
