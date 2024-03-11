@@ -1,5 +1,15 @@
 import { db } from "@/lib/firebaseConfig";
-import { arrayRemove, arrayUnion, collection, deleteDoc, doc, getDoc, updateDoc, addDoc } from "firebase/firestore";
+import {
+  arrayRemove,
+  arrayUnion,
+  collection,
+  deleteDoc,
+  doc,
+  getDoc,
+  updateDoc,
+  addDoc,
+  getDocs,
+} from "firebase/firestore";
 
 // 조건부 파라미터를 추가하고 addDoc을 바꾸고 둘다 해야한다.
 export const postFirebase = async <T extends TableTypes>(table: T, body: TableField<T>, id?: string) => {
@@ -16,10 +26,20 @@ export const getFirebase = async <T extends TableTypes>(table: T, id: string) =>
     const firebaseRef = doc(db, table, id);
     const docSnap = await getDoc(firebaseRef);
     if (docSnap.exists()) {
-      return docSnap.data() as TalbeField<T>;
+      return docSnap.data() as TableField<T>;
     } else {
       console.error("No such document!");
     }
+  } catch (e) {
+    console.error("Error getting document: ", e);
+  }
+};
+
+export const getAllFirebase = async <T extends TableTypes>(table: T) => {
+  try {
+    const firebaseRef = collection(db, table);
+    const docSnap = await getDocs(firebaseRef);
+    return docSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }) as TableField<T> & id);
   } catch (e) {
     console.error("Error getting document: ", e);
   }
@@ -33,7 +53,7 @@ export const deleteFirebase = async <T extends TableTypes>(table: T, id: string)
   }
 };
 
-export const updateFirebase = async <T extends TableTypes>(table: T, id: string, body: TalbeField<T>) => {
+export const updateFirebase = async <T extends TableTypes>(table: T, id: string, body: TableField<T>) => {
   try {
     const firebaseRef = doc(db, table, id);
     await updateDoc(firebaseRef, body);
@@ -45,7 +65,7 @@ export const updateFirebase = async <T extends TableTypes>(table: T, id: string,
 export const pushFirebaseArray = async <T extends TableTypes>(
   table: T,
   id: string,
-  field: keyof TalbeField<T>,
+  field: keyof TableField<T>,
   value: string
 ) => {
   try {
@@ -61,7 +81,7 @@ export const pushFirebaseArray = async <T extends TableTypes>(
 export const popFirebaseArray = async <T extends TableTypes>(
   table: T,
   id: string,
-  field: keyof TalbeField<T>,
+  field: keyof TableField<T>,
   value: string
 ) => {
   try {
@@ -77,7 +97,7 @@ export const popFirebaseArray = async <T extends TableTypes>(
 export const updateFirebaseField = async <T extends TableTypes>(
   table: T,
   id: string,
-  field: keyof TalbeField<T>,
+  field: keyof TableField<T>,
   value: string
 ) => {
   try {

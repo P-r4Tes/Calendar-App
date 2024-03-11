@@ -1,7 +1,12 @@
 import { isEmpty, isStringArgumentsValid } from "@/lib/functions/stringValidation";
-import { deleteFirebase, getFirebase, popFirebaseArray, postFirebase, pushFirebaseArray } from "./firebase";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "@/lib/firebaseConfig";
+import {
+  deleteFirebase,
+  getAllFirebase,
+  getFirebase,
+  popFirebaseArray,
+  postFirebase,
+  pushFirebaseArray,
+} from "./firebase";
 
 export const postGroup = (body: group) => {
   if (isEmpty(body.name)) throw new Error("Invalid name");
@@ -41,10 +46,8 @@ export const popGroupSchedule = (id: string, value: string) => {
 
 export const getAllGroups = async () => {
   try {
-    const groupsRef = collection(db, "groups");
-    const querySnapshot = await getDocs(groupsRef);
-    const groups: (group & id)[] = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }) as group & id);
-    return groups;
+    const value = await getAllFirebase<"groups">("groups");
+    return value;
   } catch (error) {
     console.error("Error getting documents: ", error);
     throw new Error("Failed to fetch groups");

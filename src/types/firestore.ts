@@ -30,7 +30,7 @@ type group = {
   name: string;
 };
 
-type TalbeField<T> = T extends "users"
+type TableField<T> = T extends "users"
   ? user
   : T extends "tags"
     ? tag
