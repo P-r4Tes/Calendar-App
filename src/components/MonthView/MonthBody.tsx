@@ -52,6 +52,8 @@ function MonthBody(props: MonthBodyProps) {
 
     const newData = new Date(parseInt(year), parseInt(month) - 1, 1);
     setDate(newData);
+
+    // eslint-disable-next-line
   }, [month, year]);
 
   useEffect(() => {
