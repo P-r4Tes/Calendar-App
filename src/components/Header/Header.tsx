@@ -1,11 +1,20 @@
 "use client";
 
-import React from "react";
-import ButtonIterator from "../ButtonIterator/ButtonIterator";
+import React, { useState } from "react";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 
-const Header = () => {
-  const selectViewButton = ["month", "week", "day"];
+import defaultAvatar from "@/assets/defaultAvatar.png";
+// import ButtonIterator from "../ButtonIterator/ButtonIterator";
+
+type HeaderPropsType = {
+  inputText: string;
+  onChangeInputText: () => void;
+};
+
+const Header = ({ inputText, onChangeInputText }: HeaderPropsType) => {
+  const [focused, setFocused] = useState<boolean>(false);
+  // const selectViewButton = ["month", "week", "day"];
   let month = useSearchParams()?.get("month");
   let year = useSearchParams()?.get("year");
 
@@ -15,16 +24,33 @@ const Header = () => {
     month = String(now.getMonth() + 1);
   }
 
+  const onBlurInput = () => setFocused(false);
+  const onFocusInput = () => setFocused(true);
+
   return (
-    <header className="flex flex-col justify-center items-center bg-yellow-200">
-      <section>
+    <header className="flex flex-col justify-center items-center bg-[#2C2F48] w-full py-2.5">
+      <section
+        className={`flex flex-row px-1 items-center  border rounded w-96 h-6 box-border overflow-hidden bg-gradient-to-t from-[#1C1B33] to-[#2E335A] ${focused ? "border-gray-300" : "border-gray-600"}`}
+      >
+        <Image
+          className={`${focused ? "ml-0" : "ml-36"}`}
+          src={defaultAvatar.src}
+          alt={"search Icon"}
+          width={24}
+          height={24}
+        />
+        <input
+          className="bg-transparent focus:outline-none border-none"
+          value={inputText}
+          onChange={onChangeInputText}
+          placeholder="Search"
+          onBlur={onBlurInput}
+          onFocus={onFocusInput}
+        />
+      </section>
+      {/* <section>
         <ButtonIterator IterateData={selectViewButton} />
-      </section>
-      <section className="flex w-full">
-        <h1>
-          {year} 년 {month}월
-        </h1>
-      </section>
+      </section> */}
     </header>
   );
 };
