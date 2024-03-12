@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 
-import defaultAvatar from "@/assets/defaultAvatar.png";
+import { Icon } from "@/assets/Icons";
 // import ButtonIterator from "../ButtonIterator/ButtonIterator";
 
 type HeaderPropsType = {
@@ -32,13 +31,7 @@ const Header = ({ inputText, onChangeInputText }: HeaderPropsType) => {
       <section
         className={`flex flex-row px-1 items-center  border rounded w-96 h-6 box-border overflow-hidden bg-gradient-to-t from-[#1C1B33] to-[#2E335A] ${focused ? "border-gray-300" : "border-gray-600"}`}
       >
-        <Image
-          className={`${focused ? "ml-0" : "ml-36"}`}
-          src={defaultAvatar.src}
-          alt={"search Icon"}
-          width={24}
-          height={24}
-        />
+        <Icon.Search className={`${focused ? "ml-0" : "ml-36"}`} alt={"search Icon"} width={24} height={24} />
         <input
           className="bg-transparent focus:outline-none border-none"
           value={inputText}
