@@ -10,7 +10,7 @@ import {
 
 export const postUser = (id: string, body: user) => {
   if (isEmpty(body.email)) throw new Error("Invalid email");
-  postFirebase<"users">("users", id, body);
+  postFirebase<"users">("users", body, id);
 };
 
 export const getUser = (id: string) => {

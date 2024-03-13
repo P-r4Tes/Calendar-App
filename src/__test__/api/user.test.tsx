@@ -1,13 +1,13 @@
 import * as firebaseModule from "@/api/firebase";
 import {
-  postUser,
-  pushUserPersonalSchedule,
-  pushUserGroup,
-  popUserPersonalSchedule,
-  popUserGroup,
-  updateUserName,
-  getUser,
   deleteUser,
+  getUser,
+  popUserGroup,
+  popUserPersonalSchedule,
+  postUser,
+  pushUserGroup,
+  pushUserPersonalSchedule,
+  updateUserName,
 } from "@/api/users";
 
 jest.mock("@/api/firebase", () => ({
@@ -47,7 +47,7 @@ describe("User functions", () => {
     const id = "TEST_USER_ID"; // id 추가
     const body = { email: "email@website.com", name: "CSKIM", groups: ["g1"], personalSchedules: ["s1"] };
     postUser(id, body);
-    expect(firebaseModule.postFirebase).toHaveBeenCalledWith("users", id, body);
+    expect(firebaseModule.postFirebase).toHaveBeenCalledWith("users", body, id);
   });
 
   test("전달인자가 유효하지 않다면 pushUserPersonalSchedule는 에러를 반환해야 한다", () => {
