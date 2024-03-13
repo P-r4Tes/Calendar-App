@@ -23,6 +23,18 @@ export const Default: Story = {
         users: ["user1"],
         schedules: ["schedules"],
       },
+      {
+        id: "test2",
+        name: "샘플2",
+        users: ["user2"],
+        schedules: ["schedules"],
+      },
+      {
+        id: "test3",
+        name: "샘플3",
+        users: ["user3"],
+        schedules: ["schedules"],
+      },
     ],
   },
 };
