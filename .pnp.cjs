@@ -35,6 +35,7 @@ const RAW_RUNTIME_STATE =
           ["@storybook/addon-postcss", "npm:2.0.0"],\
           ["@storybook/blocks", "virtual:e5cf16538da1faac25b1dff8ac92309daef107e61c202aecd5e26ea798f052ebf3f59fcee0fbffb7c23e7c78a9b2ef876a35e350471ce1f34deac301cb2c44a3#npm:7.6.17"],\
           ["@storybook/nextjs", "virtual:e5cf16538da1faac25b1dff8ac92309daef107e61c202aecd5e26ea798f052ebf3f59fcee0fbffb7c23e7c78a9b2ef876a35e350471ce1f34deac301cb2c44a3#npm:7.6.17"],\
+          ["@storybook/preview-api", "npm:8.0.0"],\
           ["@storybook/react", "virtual:e5cf16538da1faac25b1dff8ac92309daef107e61c202aecd5e26ea798f052ebf3f59fcee0fbffb7c23e7c78a9b2ef876a35e350471ce1f34deac301cb2c44a3#npm:7.6.17"],\
           ["@storybook/test", "npm:7.6.17"],\
           ["@svgr/webpack", "npm:8.1.0"],\
@@ -7374,6 +7375,18 @@ const RAW_RUNTIME_STATE =
           ["tiny-invariant", "npm:1.3.3"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:8.0.0", {\
+        "packageLocation": "../../../../.yarn/berry/cache/@storybook-channels-npm-8.0.0-1a801de7ea-10c0.zip/node_modules/@storybook/channels/",\
+        "packageDependencies": [\
+          ["@storybook/channels", "npm:8.0.0"],\
+          ["@storybook/client-logger", "npm:8.0.0"],\
+          ["@storybook/core-events", "npm:8.0.0"],\
+          ["@storybook/global", "npm:5.0.0"],\
+          ["telejson", "npm:7.2.0"],\
+          ["tiny-invariant", "npm:1.3.3"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@storybook/cli", [\
@@ -7430,6 +7443,14 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../../.yarn/berry/cache/@storybook-client-logger-npm-7.6.17-4ac887388d-10c0.zip/node_modules/@storybook/client-logger/",\
         "packageDependencies": [\
           ["@storybook/client-logger", "npm:7.6.17"],\
+          ["@storybook/global", "npm:5.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:8.0.0", {\
+        "packageLocation": "../../../../.yarn/berry/cache/@storybook-client-logger-npm-8.0.0-a941790aff-10c0.zip/node_modules/@storybook/client-logger/",\
+        "packageDependencies": [\
+          ["@storybook/client-logger", "npm:8.0.0"],\
           ["@storybook/global", "npm:5.0.0"]\
         ],\
         "linkType": "HARD"\
@@ -7569,6 +7590,14 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../../.yarn/berry/cache/@storybook-core-events-npm-7.6.17-6bda5828fe-10c0.zip/node_modules/@storybook/core-events/",\
         "packageDependencies": [\
           ["@storybook/core-events", "npm:7.6.17"],\
+          ["ts-dedent", "npm:2.2.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:8.0.0", {\
+        "packageLocation": "../../../../.yarn/berry/cache/@storybook-core-events-npm-8.0.0-da75541082-10c0.zip/node_modules/@storybook/core-events/",\
+        "packageDependencies": [\
+          ["@storybook/core-events", "npm:8.0.0"],\
           ["ts-dedent", "npm:2.2.0"]\
         ],\
         "linkType": "HARD"\
@@ -7970,6 +7999,27 @@ const RAW_RUNTIME_STATE =
           ["util-deprecate", "npm:1.0.2"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:8.0.0", {\
+        "packageLocation": "../../../../.yarn/berry/cache/@storybook-preview-api-npm-8.0.0-6fc2903cdd-10c0.zip/node_modules/@storybook/preview-api/",\
+        "packageDependencies": [\
+          ["@storybook/preview-api", "npm:8.0.0"],\
+          ["@storybook/channels", "npm:8.0.0"],\
+          ["@storybook/client-logger", "npm:8.0.0"],\
+          ["@storybook/core-events", "npm:8.0.0"],\
+          ["@storybook/csf", "npm:0.1.2"],\
+          ["@storybook/global", "npm:5.0.0"],\
+          ["@storybook/types", "npm:8.0.0"],\
+          ["@types/qs", "npm:6.9.12"],\
+          ["dequal", "npm:2.0.3"],\
+          ["lodash", "npm:4.17.21"],\
+          ["memoizerific", "npm:1.11.3"],\
+          ["qs", "npm:6.11.2"],\
+          ["tiny-invariant", "npm:1.3.3"],\
+          ["ts-dedent", "npm:2.2.0"],\
+          ["util-deprecate", "npm:1.0.2"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@storybook/react", [\
@@ -8190,6 +8240,16 @@ const RAW_RUNTIME_STATE =
           ["@storybook/types", "npm:7.6.17"],\
           ["@storybook/channels", "npm:7.6.17"],\
           ["@types/babel__core", "npm:7.20.5"],\
+          ["@types/express", "npm:4.17.21"],\
+          ["file-system-cache", "npm:2.3.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:8.0.0", {\
+        "packageLocation": "../../../../.yarn/berry/cache/@storybook-types-npm-8.0.0-2d1dd129ab-10c0.zip/node_modules/@storybook/types/",\
+        "packageDependencies": [\
+          ["@storybook/types", "npm:8.0.0"],\
+          ["@storybook/channels", "npm:8.0.0"],\
           ["@types/express", "npm:4.17.21"],\
           ["file-system-cache", "npm:2.3.0"]\
         ],\
@@ -11684,6 +11744,7 @@ const RAW_RUNTIME_STATE =
           ["@storybook/addon-postcss", "npm:2.0.0"],\
           ["@storybook/blocks", "virtual:e5cf16538da1faac25b1dff8ac92309daef107e61c202aecd5e26ea798f052ebf3f59fcee0fbffb7c23e7c78a9b2ef876a35e350471ce1f34deac301cb2c44a3#npm:7.6.17"],\
           ["@storybook/nextjs", "virtual:e5cf16538da1faac25b1dff8ac92309daef107e61c202aecd5e26ea798f052ebf3f59fcee0fbffb7c23e7c78a9b2ef876a35e350471ce1f34deac301cb2c44a3#npm:7.6.17"],\
+          ["@storybook/preview-api", "npm:8.0.0"],\
           ["@storybook/react", "virtual:e5cf16538da1faac25b1dff8ac92309daef107e61c202aecd5e26ea798f052ebf3f59fcee0fbffb7c23e7c78a9b2ef876a35e350471ce1f34deac301cb2c44a3#npm:7.6.17"],\
           ["@storybook/test", "npm:7.6.17"],\
           ["@svgr/webpack", "npm:8.1.0"],\

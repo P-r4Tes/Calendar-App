@@ -8,7 +8,7 @@ import { Icon } from "@/assets/Icons";
 
 type HeaderPropsType = {
   inputText: string;
-  onChangeInputText: () => void;
+  onChangeInputText: React.ChangeEventHandler<HTMLInputElement>;
 };
 
 const Header = ({ inputText, onChangeInputText }: HeaderPropsType) => {
@@ -33,7 +33,7 @@ const Header = ({ inputText, onChangeInputText }: HeaderPropsType) => {
       >
         <Icon.Search className={`${focused ? "ml-0" : "ml-36"}`} alt={"search Icon"} width={24} height={24} />
         <input
-          className="bg-transparent focus:outline-none border-none"
+          className="bg-transparent focus:outline-none border-none text-white"
           value={inputText}
           onChange={onChangeInputText}
           placeholder="Search"

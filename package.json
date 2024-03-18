@@ -16,6 +16,7 @@
     "install": "yarn husky"
   },
   "dependencies": {
+    "@storybook/preview-api": "^8.0.0",
     "@svgr/webpack": "^8.1.0",
     "@yarnpkg/plugin-typescript": "^4.0.0",
     "clsx": "^2.1.0",
